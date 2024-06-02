@@ -44,9 +44,6 @@ pip install cupy-cuda12x
 
 # install cudf (Optional for TCA-reordering)
 pip install --extra-index-url=https://pypi.nvidia.com cudf-cu12
-
-# install minhashcuda (Optional for TCA-reordering)
-cd DTCSpMM/reordering && cmake -DCMAKE_BUILD_TYPE=Release . && make && python setup.py install
 ```
 
 ## Clone DTC-SpMM
@@ -111,6 +108,12 @@ source run_TCGNN_SpMM.sh
 
 ```shell
 cd TCA-reordering
+
+# install minhashcuda
+git clone https://github.com/src-d/minhashcuda.git
+mv minhashcuda/* ./ && rm -r minhashcuda
+cmake -DCMAKE_BUILD_TYPE=Release . && make && python setup.py install
+
 # Run an example to reorder reddit dataset
 python TCA_reorder.py --dataset reddit --thres 16
 ```

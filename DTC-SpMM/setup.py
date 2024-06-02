@@ -1,22 +1,3 @@
-# from setuptools import setup
-# from torch.utils.cpp_extension import BuildExtension, CUDAExtension
-
-# setup(
-#     name='DTCSpMM',
-#     ext_modules=[
-#         CUDAExtension('DTCSpMM', [
-#             'DTCSpMM.cpp',
-#             'DTCSpMM_kernel.cu',
-#         ],
-#         library_dirs=['/mnt/raid/fanruibo/sputnik-install/usr/local/lib/', '/mnt/raid/fanruibo/glog/glog-install/usr/local/lib/'],
-#         libraries=['sputnik','glog'],
-#         include_dirs=['/mnt/raid/fanruibo/sputnik-install/usr/local/include/', '/mnt/raid/fanruibo/glog/glog-install/usr/local/include/']),
-#     ],
-#     cmdclass={
-#       'build_ext': BuildExtension
-#     })
-
-
 from setuptools import setup
 from torch.utils.cpp_extension import BuildExtension, CUDAExtension
 import os
