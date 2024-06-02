@@ -16,7 +16,7 @@ This project contains the codes for **DTC-SpMM**, a recent work aimed at enhanci
 
   
 
-## Prepare your environment
+## 1. Prepare your environment
 
 ```shell
 # RTX 4090 (prefer) or 3090 with CUDA 12.1 installed.
@@ -39,6 +39,9 @@ pip install scipy
 # install cugraph (Optional for TCA-reordering)
 pip install cugraph-cu12 --extra-index-url=https://pypi.nvidia.com
 
+# install datasketch (Optional for TCA-reordering)
+pip install datasketch
+
 # install cupy (Optional for TCA-reordering)
 pip install cupy-cuda12x
 
@@ -46,27 +49,27 @@ pip install cupy-cuda12x
 pip install --extra-index-url=https://pypi.nvidia.com cudf-cu12
 ```
 
-## Clone DTC-SpMM
+## 2. Clone DTC-SpMM
 
 ```shell
 git clone --recursive git@github.com:fan1997/DTC-SpMM-ASPLOS24.git
 cd DTC-SpMM-ASPLOS24 && source init_dtc.sh
 ```
 
-## Prepare Sputnik (dependency)
+## 3. Prepare Sputnik (dependency)
 
 ```shell
 cd DTC-SpMM-ASPLOS/third_party/
 source ./build_sputnik.sh
 ```
 
-## Build DTC-SpMM
+## 4. Build DTC-SpMM
 
 ```shell
 cd ../DTC-SpMM && source build.sh
 ```
 
-## Download datasets
+## 5. Download datasets
 
 ```shell
 git lfs clone --include-all https://github.com/fan1997/dtc_datasets.git
@@ -75,7 +78,7 @@ tar -zxvf reordered_matrices.tar.gz
 tar -zxvf origin_matrices.tar.gz
 ```
 
-## Run tests
+## 6. Run tests
 
 ``` SHELL
 # Run DTCSpMM
@@ -104,7 +107,7 @@ cd scripts/TCGNN
 source run_TCGNN_SpMM.sh
 ```
 
-## Use TCA-reordering
+## 7. Use TCA-reordering
 
 ```shell
 cd TCA-reordering
@@ -120,6 +123,6 @@ python TCA_reorder.py --dataset reddit --thres 16
 
 ## Related work
 
-- We extend our heartfelt gratitude to the outstanding **TC-GNN** project (https://github.com/YukeWang96/TC-GNN_ATC23.git). Our development of DTC-SpMM was based on the foundational work established by TC-GNN.
+- We extend our heartfelt gratitude to the outstanding **TC-GNN** project (https://github.com/YukeWang96/TC-GNN_ATC23.git). The development of DTC-SpMM was based on the foundational work established by TC-GNN.
 - We draw insights from **AsPT** (http://gitlab.hpcrl.cse.ohio-state.edu/chong/ppopp19_ae)
-- We draw insights from Merge-SpMM ([GitHub - owensgroup/merge-spmm: Code for paper "Design Principles for Sparse Matrix Multiplication on the GPU" accepted to Euro-Par 2018](https://github.com/owensgroup/merge-spmm))
+- We draw insights from **Merge-SpMM** ([GitHub - owensgroup/merge-spmm: Code for paper "Design Principles for Sparse Matrix Multiplication on the GPU" accepted to Euro-Par 2018](https://github.com/owensgroup/merge-spmm))
