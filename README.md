@@ -1,6 +1,6 @@
 # DTC-SpMM: Accelerating General Sparse Matrix Multiplication with Tensor Cores
 
-This project contains the codes for **DTC-SpMM**, a recent work aimed at enhancing the performance of general-purpose Sparse Matrix Multiplication (SpMM) on GPUs equipped with Tensor Cores. This work has been accepted for presentation at **ASPLOS'24**.
+This project contains the codes for **DTC-SpMM**, a recent work aimed at enhancing the performance of general-purpose Sparse Matrix-Matrix Multiplication (SpMM) on GPUs equipped with Tensor Cores. This work has been accepted for presentation at **ASPLOS'24**.
 
 - **If you find this work useful, please cite this project and our [paper](https://dl.acm.org/doi/abs/10.1145/3620666.3651378 ).**
 
