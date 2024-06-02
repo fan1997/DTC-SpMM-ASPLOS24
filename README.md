@@ -87,7 +87,7 @@ cd ${DTC_HOME}/scripts/DTCSpMM
 source run_DTC_SpMM.sh
 
 # Run cuSPARSE
-cd ${DTC_HOME}/scripts/cuSPARSE 
+cd ${DTC_HOME}/scripts/cusparse 
 # modify the dataset path in run_cuSPARSE.py to your own path.
 source run_cuSPARSE_SpMM.sh
 
