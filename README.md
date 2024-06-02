@@ -59,14 +59,14 @@ cd DTC-SpMM-ASPLOS24 && source init_dtc.sh
 ## 3. Prepare Sputnik (dependency)
 
 ```shell
-cd DTC-SpMM-ASPLOS/third_party/
+cd third_party/
 source ./build_sputnik.sh
 ```
 
 ## 4. Build DTC-SpMM
 
 ```shell
-cd ../DTC-SpMM && source build.sh
+cd ${DTC_HOME}/DTC-SpMM && source build.sh
 ```
 
 ## 5. Download datasets
@@ -82,27 +82,27 @@ tar -zxvf origin_matrices.tar.gz
 
 ``` SHELL
 # Run DTCSpMM
-cd scripts/DTCSpMM 
+cd ${DTC_HOME}/scripts/DTCSpMM 
 # modify the dataset path in run_DTC_SpMM.py to your own path.
 source run_DTC_SpMM.sh
 
 # Run cuSPARSE
-cd scripts/cuSPARSE 
+cd ${DTC_HOME}/scripts/cuSPARSE 
 # modify the dataset path in run_cuSPARSE.py to your own path.
 source run_cuSPARSE_SpMM.sh
 
 # Run Sputnik
-cd scripts/Sputnik 
+cd ${DTC_HOME}/scripts/Sputnik 
 # modify the dataset path in run_Sputnik.py to your own path.
 source run_Sputnik.sh
 
 # Run SparseTIR, you need to install SparseTIR (https://sampl.cs.washington.edu/SparseTIR/install.html)
-cd scripts/SparseTIR 
+cd ${DTC_HOME}/scripts/SparseTIR 
 # modify the dataset path in run_sparsetir.py to your own path.
 source run_SparseTIR.sh
 
 # Run TCGNN-SpMM
-cd scripts/TCGNN 
+cd ${DTC_HOME}/scripts/TCGNN 
 # modify the dataset path in run_TCGNN_SpMM.py to your own path.
 source run_TCGNN_SpMM.sh
 ```
