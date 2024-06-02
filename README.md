@@ -9,8 +9,10 @@ export LD_LIBRARY_PATH=/usr/local/cuda-12.1/lib64:$LD_LIBRARY_PATH
 # Create and activate virtual env
 conda create -n DTCSpMM python=3.9
 conda activate DTCSpMM
+
 # install PyTorch (must)
 conda install pytorch pytorch-cuda=12.1 -c pytorch -c nvidia
+
 # install cmake, numpy and scipy (must)
 conda install cmake
 pip install numpy
@@ -18,10 +20,13 @@ pip install scipy
 
 # install cugraph (Optional for TCA-reordering)
 pip install cugraph-cu12 --extra-index-url=https://pypi.nvidia.com
+
 # install cupy (Optional for TCA-reordering)
 pip install cupy-cuda12x
+
 # install cudf (Optional for TCA-reordering)
 pip install --extra-index-url=https://pypi.nvidia.com cudf-cu12
+
 # install minhashcuda (Optional for TCA-reordering)
 cd DTCSpMM/reordering && cmake -DCMAKE_BUILD_TYPE=Release . && make && python setup.py install
 ```
@@ -49,7 +54,10 @@ cd ../DTC-SpMM && source build.sh
 ### Download datasets
 
 ```shell
-source download.sh /set/to/your/path
+git lfs clone --include-all https://github.com/fan1997/dtc_datasets.git
+cd dtc_datasets
+tar -zxvf reordered_matrices.tar.gz
+tar -zxvf origin_matrices.tar.gz
 ```
 
 ### Run tests
@@ -57,12 +65,12 @@ source download.sh /set/to/your/path
 ``` SHELL
 # Run DTCSpMM
 cd scripts/DTCSpMM 
-# modify the path in run_DTCSpMM.py to your own path.
+# modify the dataset path in run_DTCSpMM.py to your own path.
 source run_DTCSpMM.sh
 
 # Run cuSPARSE
 cd scripts/cuSPARSE 
-# modify the path in run_DTCSpMM.py to your own path.
+# modify the dataset path in run_DTCSpMM.py to your own path.
 source run_cuSPARSESpMM.sh
 ```
 
