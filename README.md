@@ -1,4 +1,22 @@
-### Prepare your environment.
+# DTC-SpMM: Accelerating General Sparse Matrix Multiplication with Tensor Cores
+
+This project contains the codes for **DTC-SpMM**, a recent work aimed at enhancing the performance of general-purpose Sparse Matrix Multiplication (SpMM) on GPUs equipped with Tensor Cores. This work has been accepted for presentation at **ASPLOS'24**.
+
+- **If you find this work useful, please cite this project and our [paper](https://dl.acm.org/doi/abs/10.1145/3620666.3651378 ).**
+
+  ```tex
+  @inproceedings{fan2024dtc,
+    title={DTC-SpMM: Bridging the Gap in Accelerating General Sparse Matrix Multiplication with Tensor Cores},
+    author={Fan, Ruibo and Wang, Wei and Chu, Xiaowen},
+    booktitle={Proceedings of the 29th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 3},
+    pages={253--267},
+    year={2024}
+  }
+  ```
+
+  
+
+## Prepare your environment
 
 ```shell
 # RTX 4090 (prefer) or 3090 with CUDA 12.1 installed.
@@ -31,27 +49,27 @@ pip install --extra-index-url=https://pypi.nvidia.com cudf-cu12
 cd DTCSpMM/reordering && cmake -DCMAKE_BUILD_TYPE=Release . && make && python setup.py install
 ```
 
-### Clone DTC-SpMM
+## Clone DTC-SpMM
 
 ```shell
-git clone --recursive 
+git clone --recursive git@github.com:fan1997/DTC-SpMM-ASPLOS24.git
 cd DTC-SpMM-ASPLOS24 && source init_dtc.sh
 ```
 
-### Prepare Sputnik (dependency)
+## Prepare Sputnik (dependency)
 
 ```shell
 cd DTC-SpMM-ASPLOS/third_party/
 source ./build_sputnik.sh
 ```
 
-### Build DTC-SpMM
+## Build DTC-SpMM
 
 ```shell
 cd ../DTC-SpMM && source build.sh
 ```
 
-### Download datasets
+## Download datasets
 
 ```shell
 git lfs clone --include-all https://github.com/fan1997/dtc_datasets.git
@@ -60,21 +78,36 @@ tar -zxvf reordered_matrices.tar.gz
 tar -zxvf origin_matrices.tar.gz
 ```
 
-### Run tests
+## Run tests
 
 ``` SHELL
 # Run DTCSpMM
 cd scripts/DTCSpMM 
-# modify the dataset path in run_DTCSpMM.py to your own path.
-source run_DTCSpMM.sh
+# modify the dataset path in run_DTC_SpMM.py to your own path.
+source run_DTC_SpMM.sh
 
 # Run cuSPARSE
 cd scripts/cuSPARSE 
-# modify the dataset path in run_DTCSpMM.py to your own path.
-source run_cuSPARSESpMM.sh
+# modify the dataset path in run_cuSPARSE.py to your own path.
+source run_cuSPARSE_SpMM.sh
+
+# Run Sputnik
+cd scripts/Sputnik 
+# modify the dataset path in run_Sputnik.py to your own path.
+source run_Sputnik.sh
+
+# Run SparseTIR, you need to install SparseTIR (https://sampl.cs.washington.edu/SparseTIR/install.html)
+cd scripts/SparseTIR 
+# modify the dataset path in run_sparsetir.py to your own path.
+source run_SparseTIR.sh
+
+# Run TCGNN-SpMM
+cd scripts/TCGNN 
+# modify the dataset path in run_TCGNN_SpMM.py to your own path.
+source run_TCGNN_SpMM.sh
 ```
 
-### Use TCA-reordering
+## Use TCA-reordering
 
 ```shell
 cd TCA-reordering
@@ -82,3 +115,8 @@ cd TCA-reordering
 python TCA_reorder.py --dataset reddit --thres 16
 ```
 
+## Related work
+
+- We extend our heartfelt gratitude to the outstanding **TC-GNN** project (https://github.com/YukeWang96/TC-GNN_ATC23.git). Our development of DTC-SpMM was based on the foundational work established by TC-GNN.
+- We draw insights from **AsPT** (http://gitlab.hpcrl.cse.ohio-state.edu/chong/ppopp19_ae)
+- We draw insights from Merge-SpMM ([GitHub - owensgroup/merge-spmm: Code for paper "Design Principles for Sparse Matrix Multiplication on the GPU" accepted to Euro-Par 2018](https://github.com/owensgroup/merge-spmm))
