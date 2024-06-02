@@ -72,7 +72,7 @@ cd ../DTC-SpMM && source build.sh
 ## 5. Download datasets
 
 ```shell
-git lfs clone --include-all https://github.com/fan1997/dtc_datasets.git
+git lfs clone https://github.com/fan1997/dtc_datasets.git
 cd dtc_datasets
 tar -zxvf reordered_matrices.tar.gz
 tar -zxvf origin_matrices.tar.gz
